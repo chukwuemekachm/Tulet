@@ -1,0 +1,56 @@
+@using System.Collections.Generic 
+@model IEnumerable<Tulet.Models.Entities.Post>
+@{
+    ViewData["Title"] = "Admin | Posts"; 
+}
+
+<div class="container">
+	<h2><span class="glyphicon glyphicon-book"></span> @ViewData["Title"]</h2>
+	<div class="row">
+    	<div class="col-md-3">
+            @await Component.InvokeAsync("AdminNav")
+		</div>
+		<div class="col-md-9">
+            <form asp-controller="Admin" asp-action="Post" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search Post" name="id">
+                    <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-striped w3-striped table-responsive">
+                <tr>
+                    <th>No</th>
+                    <th>Agent</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th><span class="glyphicon glyphicon-file"></span></th>
+                    <th><span class="glyphicon glyphicon-trash"></span></th>
+                </tr>
+                @{
+                    if (Model != null) 
+                    {
+                        foreach (var item in this.Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.UserId</td>
+                                <td>@item.Title</td>
+                                <td>@item.Category</td>
+                                <td>@item.Price</td>
+                                <td>@item.PostDate</td>
+                                <td><a asp-controller="Admin" asp-action="PostInfo" asp-route-id="@item.Id"><button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-file"> View</span></button></a></td>
+                                <td><a asp-action="DeletePost" asp-route-id="@item.Id"><button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"> Delete</span></button></a></td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>

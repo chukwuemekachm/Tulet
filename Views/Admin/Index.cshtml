@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "Admin Dashboard"; 
+}
+
+<div class="container">
+	<h2><span class="glyphicon glyphicon-user"></span> Admin Dashboard </h2>
+	<div class="row">
+    	<div class="col-md-3">
+            @await Component.InvokeAsync("AdminNav")
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="well">
+	    				<h2><span class="glyphicon glyphicon-user"></span> Users</h2>
+						<a href="#">
+							<p><span class="glyphicon glyphicon-ok"></span> Verifed Users</p>
+						</a>
+						<a href="#">
+							<p><span class="glyphicon glyphicon-remove"></span> Non-Verifed Users</p>
+						</a>
+				    </div>
+				</div>
+				<div class="col-md-4">
+					<div class="well">
+						<h2><span class="glyphicon glyphicon-book"></span> Posts</h2>
+						<a href="#">
+					    	<p><span class="glyphicon glyphicon-tags"></span> Active Posts</p>
+						</a>
+						<a href="#">
+						    <p><span class="glyphicon glyphicon-remove-circle"></span> In-Active Posts</p>
+						</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="well">
+						<h2><span class="glyphicon glyphicon-comment"></span> Messages</h2>
+						<a href="#">
+							<p><span class="glyphicon glyphicon-question-sign"></span> Request</p>
+						</a>
+						<a href="#">
+							<p><span class="glyphicon glyphicon-exclamation-sign"></span> Complaints</p>
+						</a>
+					</div>
+				</div>
+			</div>
+        <!-- Second Row -->
+            <div class="row">
+		    	<div class="col-md-4">
+					<div class="well">
+						<h4><span class="glyphicon glyphicon-bookmark"></span> <a asp-action="Category">Categories</a></h4>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="well">
+						<h4><span class="glyphicon glyphicon-home"></span> <a asp-action="Type">Types</a></h4>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="well">
+						<h4><span class="glyphicon glyphicon-cloud"></span> States</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>           

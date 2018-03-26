@@ -1,0 +1,14 @@
+@model IEnumerable<Tulet.Nav>
+<div>
+	<ul class="list-group">
+		@{
+			if (Model != null)
+			{
+				foreach (var item in this.Model)
+				{
+					<li class="list-group-item"><a asp-controller="Admin" asp-action="@item.Action"> @item.Name</a> <span class="badge w3-teal"> @item.Count</span></li>
+				}				
+			}
+		}
+	</ul>
+</div>

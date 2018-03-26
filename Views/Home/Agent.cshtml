@@ -1,0 +1,55 @@
+@using Tulet.Models.Entities
+@model User
+
+@{
+    ViewData["Title"] = "Agent Info";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-3">
+		<div class="w3-card-2">
+			<h3 class="w3-center">About Agent</h3>
+			<hr />
+			<center>
+		    	<img width="60%" src="~/@Model.Photo" class="img img-responsive img-circle">
+			</center>
+			<hr />
+			<h3 class="w3-center"><b>@Model.FirstName @Model.LastName</b></h3>
+			<p><span class="glyphicon glyphicon-envelope"></span> @Model.Email</p>
+			<p><span class="glyphicon glyphicon-phone"></span> @Model.Phone</p>
+			<p><span class="glyphicon glyphicon-certificate"></span> @Model.Verified</p>
+			<hr />
+		</div>
+	</div>
+
+    <div class="col-md-6">
+        <div class="w3-card-2"><h3>Posts by @Model.FirstName @Model.LastName</h3></div>
+		<div class="row">
+            @{
+                if (Model.Post != null)
+                {
+                    foreach (var item in this.Model.Post)
+                    {
+                        <div class="col-md-6">
+                            <div class="w3-card-2">
+                                <div class="w3-display-container">
+                                    <img src="~/@item.Photo1" alt="Lights" class="post img-responsive">
+                                    <br>
+                                    <p class="des"><span class="glyphicon glyphicon-list"></span> @item.Title</p>
+                                    <p class="des"><span class="glyphicon glyphicon-tag"></span> @item.Type</p>
+                                    <p class="des"><span class="glyphicon glyphicon-bitcoin"></span> @item.Price</p>
+                                    <p class="des"><span class="glyphicon glyphicon-cloud"></span> @item.Location</p>
+                                    <p class="des"><span class="glyphicon glyphicon-calendar"></span> @item.PostDate</p>
+                                    <a asp-action="Post" asp-route-id="@item.Id"><button class="w3-display-bottomright w3-btn w3-round-xxlarge btn-primary">View</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <h2><a class="btn btn-default btn-sm @ViewBag.Previous w3-left"><span class="glyphicon glyphicon-arrow-left"> Previous</span></a> <a class="btn btn-default btn-sm @ViewBag.Next w3-right">Next <span class="glyphicon glyphicon-arrow-right"></span></a></h2>
+    </div>
+    <div class="col-md-3">Ads</div>
+</div>

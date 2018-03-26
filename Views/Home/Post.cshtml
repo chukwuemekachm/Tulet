@@ -1,0 +1,79 @@
+@using Tulet.Models.Entities
+@model Post
+
+@{
+    ViewData["Title"] = "Advert Description";
+}
+
+<div class="row">
+<!--	Vacancy Details	-->
+    <br>
+	<div class="col-md-9 des_pad">
+		<div class="w3-display-container">
+			<div class="author">
+		    	<a asp-action="Agent" asp-route-id="@Model.User.Email">
+					<img src="~/@Model.User.Photo" class="pic img-circle">
+			    	<h3 class="author">@Model.User.FirstName @Model.User.LastName</h3>
+				</a>
+		    </div>
+		    <img src="~/@Model.Photo1" alt="Description" class="img-responsive des_img" id="myImg">
+		    <br>
+		    <div class="row">
+			    <div class="col-md-4">
+    		        <img class="des_demo" id="one" src="~/@Model.Photo1" style="height:8em;width:100%;opacity: .5;" onclick="currentDiv('../img/house4.jpg','one')">
+			    </div>
+			    <div class="col-md-4">
+			        <img class="des_demo" id="two" src="~/@Model.Photo2" style="height:8em;width:100%;" onclick="currentDiv('../img/house3.jpg','two')">
+			    </div>
+			    <div class="col-md-4">
+			        <img class="des_demo" id="three" src="~/@Model.Photo3" style="height:8em;width:100%;" onclick="currentDiv('../img/house2.jpg','three')">
+			    </div>
+		    </div>
+		    <br>
+    	    <p class="des"><span class="glyphicon glyphicon-list"></span> @Model.Title</p>
+            <p class="des"><span class="glyphicon glyphicon-tag"></span> @Model.Type</p>
+            <p class="des"><span class="glyphicon glyphicon-bitcoin"></span> @Model.Price</p>
+            <p class="des"><span class="glyphicon glyphicon-cloud"></span> @Model.Location</p>
+            <p class="des"><span class="glyphicon glyphicon-calendar"></span> @Model.PostDate</p>
+		    <br>
+            <h5><b>Advert Description</b></h5>
+            <p class="">@Model.Description</p>
+		</div>
+    <!-- An Ad should go here -->		
+	</div>
+	<!--	Ads go here	-->
+	<div class="col-md-3 des_ads">
+		<div class="panel-group">
+		    <div class="panel panel-default w3-card-4">
+		      	<div class="panel-heading w3-blue-grey">Latest</div>
+			       	<div class="panel-body">
+			        	<img src="~/images/img/tech_camera.jpg" class="img-responsive">
+		        		<h5>
+		        			<a href="#">New Advert</a>
+		        		</h5>
+		        	</div>
+			</div>
+            <br>
+			<div class="panel panel-default w3-card-4">
+			    <div class="panel-heading w3-blue-grey">Latest</div>
+    		        <div class="panel-body">
+			           	<img src="~/images/img/tech_phone.jpg" class="img-responsive">
+			      		<h5>
+			       			<a href="#">New Advert</a>
+			       		</h5>
+				    </div>
+			</div>
+            <br>
+			<div class="panel panel-default w3-card-4">
+			    <div class="panel-heading w3-blue-grey">Latest</div>
+			        <div class="panel-body">
+			           	<img src="~/images/img/tech_drone.jpg" class="img-responsive">
+					       	<h5>
+					       		<a href="#">New Advert</a>
+					       	</h5>
+				    </div>
+			</div>
+            <br>
+		</div>
+	</div>
+</div>

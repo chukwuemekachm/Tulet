@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Global Dashboard"; 
+}
+
+<div class="container">
+	<h2><span class="glyphicon glyphicon-user"></span> @ViewData["Title"]</h2>
+	<div class="row">
+    	<div class="col-md-3">
+            @await Component.InvokeAsync("GlobalNav")
+		</div>
+		<div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="well">
+                        <h4><span class="glyphicon glyphicon-king"></span> <a asp-action="Admin">My Admins</a></h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h4><span class="glyphicon glyphicon-signal"></span> <a asp-action="Role">Roles</a></h4>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h4><span class="glyphicon glyphicon-user"></span> <a asp-action="Role">Users</a></h4>
+                    </div>
+                </div>
+	        </div>
+        </div>
+    </div>
+</div>         

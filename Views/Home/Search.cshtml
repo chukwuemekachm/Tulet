@@ -1,0 +1,39 @@
+@using Tulet.Models.Entities
+@using System.Linq
+@using System.Collections.Generic
+@model IEnumerable<Post>
+
+<div class="container">
+    <br>
+    <h2><span class="glyphicon glyphicon-search"></span> @ViewData["Title"]</h2>
+	<div class="row">
+        @{
+            if (Model != null)
+            {
+                foreach (var item in this.Model)
+                {
+                    <div class="col-md-3">
+                        <div class="w3-card-2">
+                            <div class="w3-display-container">
+                                 <div class="author">
+                                    <img src="~/@item.User.Photo" class="pic img-circle">
+                                    <span class="author">@item.User.FirstName @item.User.LastName</span>
+                                </div>
+                                <img src="~/@item.Photo1" alt="Lights" class="post img-responsive">
+                                <br>
+                                <p class="des"><span class="glyphicon glyphicon-list"></span> @item.Title</p>
+                                <p class="des"><span class="glyphicon glyphicon-tag"></span> @item.Type</p>
+                                <p class="des"><span class="glyphicon glyphicon-bitcoin"></span> @item.Price</p>
+                                <p class="des"><span class="glyphicon glyphicon-cloud"></span> @item.Location</p>
+                                <p class="des"><span class="glyphicon glyphicon-calendar"></span> @item.PostDate</p>
+                                <a asp-action="Post" asp-route-id="@item.Id"><button class="w3-display-bottomright w3-btn w3-round-xxlarge btn-primary">View</button></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+			
+    </div>
+    <h2><a class="btn btn-default btn-sm @ViewBag.Previous w3-left"><span class="glyphicon glyphicon-arrow-left"> Previous</span></a> <a class="btn btn-default btn-sm @ViewBag.Next w3-right">Next <span class="glyphicon glyphicon-arrow-right"></span></a></h2>
+</div>

@@ -1,0 +1,87 @@
+@using System.Collections.Generic
+@using System.Linq 
+@model Tulet.Models.Entities.User
+@{
+    ViewData["Title"] = "Admin | Agent Profile"; 
+}
+
+<div class="container">
+	<h2><span class="glyphicon glyphicon-user"></span> @ViewData["Title"]</h2>
+	<div class="row">
+    	<div class="col-md-3">
+            @await Component.InvokeAsync("AdminNav")
+		</div>
+		<div class="col-md-9">
+            <div class="row">
+                <div class="col-md-10 w3-content w3-padding-4">
+                    <img src="~/@Model.Photo" class="img img-responsive w3-card-2" style="height:15em" />
+                    <hr />
+                    <div class="row">
+                        <b>@{
+                            if (Model.Verified == true)
+                            {
+                                <p style="color:rgb(20, 179, 33)(0, 255, 21)">@Model.FirstName @Model.LastName</p>
+                            }
+                            else
+                            {
+                                <p style="color:rgb(199, 28, 28)">@Model.FirstName @Model.LastName</p>
+                            }
+                        }</b>
+                        <hr />
+                        <div class="col-md-6 w3-padding-2">
+                            <p><span class="glyphicon glyphicon-envelope"></span> @Model.Email</p>
+                            <p><span class="glyphicon glyphicon-phone"></span> @Model.Phone</p>
+                            <p><span class="glyphicon glyphicon-home"></span> @Model.Address</p>
+                            <p><span class="glyphicon glyphicon-gift"></span> @Model.BirthDate</p>
+                        </div>
+                        <div class="col-md-6 w3-padding-2">
+                            <p><span class="glyphicon glyphicon-ok"></span> @Model.Verified</p>
+                            <p><span class="glyphicon glyphicon-certificate"></span> @Model.Active</p>
+                            <p><span class="glyphicon glyphicon-calendar"></span> @Model.RegDate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 w3-content w3-padding-4">
+                    @{
+                        if (Model.Active == true)
+                        {
+                            <a class="w3-btn-floating w3-red" title="De-Activate Agent" asp-action="DeActivateAgent" asp-route-id="@Model.Email"><span class="glyphicon glyphicon-remove"> </span></a>
+                        }else {
+                            <a class="w3-btn-floating w3-green" title="Activate Agent" asp-action="ActivateAgent" asp-route-id="@Model.Email"><span class="glyphicon glyphicon-ok"> </span></a>
+                        }
+                    }
+                    <a class="w3-btn-floating w3-teal" title="Verify Agent"><span class="glyphicon glyphicon-tag"> </span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <h2>Agent Posts</h2>
+
+    <!-- Agent's Posts -->
+
+    <div class="row">
+        @{
+            if (Model.Post != null)
+            {
+                foreach (var item in Model.Post)
+                {
+                    <a asp-controller="Admin" asp-action="PostInfo" asp-route-id="@item.Id">
+                        <div class="col-md-3 w3-content">
+                            <div class="w3-padding-2 w3-card-2">
+                                <img src="~/@item.Photo1" class="img img-responsive" style="height:12em">
+                                <br />
+                                <p><b><span class="glyphicon glyphicon-cloud"></span></b> @item.Location</p>
+                                <p><b><span class="glyphicon glyphicon-bookmark"></span></b> @item.Category</p>
+                                <p><b><span class="glyphicon glyphicon-home"></span></b> @item.Type</p>
+                                <p><b><span class="glyphicon glyphicon-bitcoin"></span></b> @item.Price</p>
+                            </div>
+                        </div>
+                    </a>  
+                }
+            }
+        }
+    </div>
+</div>

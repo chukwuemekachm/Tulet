@@ -1,0 +1,104 @@
+@using System.Collections.Generic
+@using System.Linq 
+@model Tulet.Models.Entities.Post
+@{
+    ViewData["Title"] = "Admin | Agent Profile"; 
+}
+
+<div class="container">
+	<h2><span class="glyphicon glyphicon-user"></span> @ViewData["Title"]</h2>
+	<div class="row">
+    	<div class="col-md-3">
+            @await Component.InvokeAsync("AdminNav")
+		</div>
+		<div class="col-md-6">
+            <div class="row">
+                <h3>@Model.Title</h3>
+                <br />
+                <div class="w3-display-container">
+					<img src="~/@Model.Photo1" alt="Description" class="img img-responsive des_img" id="myImg">
+					<br>
+					<div class="row">
+					    <div class="col-md-4 des_demo">
+						    <img class="img img-responsive" id="one" src="~/@Model.Photo1" style="height:8em;;width:100%;opacity: .5;" onclick="currentDiv(document.getElementById('one').src,'one')">
+						</div>
+						<div class="col-md-4 des_demo">
+						    <img class="img img-responsive" id="two" src="~/@Model.Photo2" style="height:8em;width:100%" onclick="currentDiv(document.getElementById('one').src,'two')">
+						</div>
+						<div class="col-md-4 des_demo">
+						    <img class="img img-responsive" id="three" src="~/@Model.Photo3" style="height:8em;width:100%" onclick="currentDiv(document.getElementById('one').src,'three')">
+						</div>
+					</div>
+					<br>
+					<p><span class="glyphicon glyphicon-bookmark"></span> @Model.Category</p>
+					<p><span class="glyphicon glyphicon-home"></span> @Model.Type</p>
+					<p><span class="glyphicon glyphicon-cloud"></span> @Model.State</p>
+                    <p><span class="glyphicon glyphicon-road"></span> @Model.Location</p>
+					<p><span class="glyphicon glyphicon-calendar"></span> @Model.PostDate</p>
+					<h3>Description</h3>
+					<p><span class="glyphicon glyphicon-list"></span> @Model.Description</p>
+				</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="w3-content w3-padding-4">
+                <a asp-controller="Admin" asp-action="DeletePost" asp-route-id="@Model.Id" class="btn btn-danger btn-block" title="Delete Post"><span class="glyphicon glyphicon-trash"></span> Delete Post</a>
+            </div>
+            <div class="w3-card-2">
+                    @{
+                        if (Model.User.Verified == true)
+                        {
+                            <a class="btn btn-success btn-block glyphicon glyphicon-user" asp-controller="Admin" asp-action="AgentInfo" asp-route-id="@Model.UserId">  Verified Agent</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-danger btn-block glyphicon glyphicon-user" asp-controller="Admin" asp-action="AgentInfo" asp-route-id="@Model.UserId"> Un-Verified Agent</a>
+                        }
+                    }
+                <img src="~/@Model.User.Photo" class="img img-responsive">
+                <br />
+                <p><b>@Model.User.FirstName @Model.User.LastName</b></p>
+                <p><span class="glyphicon glyphicon-envelope"> @Model.User.Email</span></p>
+                <p><span class="glyphicon glyphicon-phone"> @Model.User.Phone</span></p>
+            </div>
+        </div>
+    </div>
+	<hr />
+    <h2>Posts by @Model.User.FirstName @Model.User.LastName</h2>
+	<div class="row">
+        @{
+            if (Model.User.Post != null)
+            {
+                foreach (var item in Model.User.Post)
+                {
+                    <a asp-controller="Admin" asp-action="PostInfo" asp-route-id="@item.Id">
+						<div class="col-md-3 w3-content">
+							<div class="w3-padding-2 w3-card-2">
+								<img src="~/@item.Photo1" class="img img-responsive" style="height:12em">
+								<br />
+								<p><b><span class="glyphicon glyphicon-cloud"></span></b> @item.Location</p>
+								<p><b><span class="glyphicon glyphicon-bookmark"></span></b> @item.Category</p>
+								<p><b><span class="glyphicon glyphicon-home"></span></b> @item.Type</p>
+								<p><b><span class="glyphicon glyphicon-bitcoin"></span></b> @item.Price</p>
+							</div>
+						</div>
+					</a>  
+                }
+            }
+        }
+    </div>
+
+</div>
+<script>
+	function currentDiv(ur,obx) {
+		// body...
+	    document.getElementById('one').style.opacity = '1.0';
+		document.getElementById('two').style.opacity = '1.0';
+		document.getElementById('three').style.opacity = '1.0';
+		var x = document.getElementById('myImg').src;
+        x = "";
+		x = ur;
+		var i = document.getElementById(obx);
+		i.style.opacity = "0.5";
+	}
+	</script>

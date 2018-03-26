@@ -1,0 +1,12 @@
+C:\Users\user\Desktop\AspCore\Tulet\bin\Debug\netcoreapp2.0\app.db
+C:\Users\user\Desktop\AspCore\Tulet\bin\Debug\netcoreapp2.0\Tulet.deps.json
+C:\Users\user\Desktop\AspCore\Tulet\bin\Debug\netcoreapp2.0\Tulet.runtimeconfig.json
+C:\Users\user\Desktop\AspCore\Tulet\bin\Debug\netcoreapp2.0\Tulet.runtimeconfig.dev.json
+C:\Users\user\Desktop\AspCore\Tulet\bin\Debug\netcoreapp2.0\Tulet.dll
+C:\Users\user\Desktop\AspCore\Tulet\bin\Debug\netcoreapp2.0\Tulet.pdb
+C:\Users\user\Desktop\AspCore\Tulet\obj\Debug\netcoreapp2.0\Tulet.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\AspCore\Tulet\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\user\Desktop\AspCore\Tulet\obj\Debug\netcoreapp2.0\Tulet.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\AspCore\Tulet\obj\Debug\netcoreapp2.0\Tulet.AssemblyInfo.cs
+C:\Users\user\Desktop\AspCore\Tulet\obj\Debug\netcoreapp2.0\Tulet.dll
+C:\Users\user\Desktop\AspCore\Tulet\obj\Debug\netcoreapp2.0\Tulet.pdb

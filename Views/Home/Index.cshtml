@@ -1,0 +1,104 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Tulet.Models.HomeViewModels
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+	<div class="row">
+        @{
+            if (Model.Lease != null && Model.Lease.Count > 0)
+            {
+                <h2>Top Lease <a asp-action="Lease" class="w3-btn w3-btn-floating w3-right"><span class="glyphicon glyphicon-book"></span></a></h2>
+                foreach (var item in Model.Lease)
+                {
+                    <div class="col-md-3">
+                        <div class="w3-card-2">
+                            <div class="w3-display-container">
+                                 <div class="author">
+                                    <img src="@item.User.Photo" class="pic img-circle">
+                                    <span class="author">@item.User.FirstName @item.User.LastName</span>
+                                </div>
+                                <img src="~/@item.Photo1" alt="Lights" class="post img-responsive">
+                                <br>
+                                <p class="des"><span class="glyphicon glyphicon-list"></span> @item.Title</p>
+                                <p class="des"><span class="glyphicon glyphicon-tag"></span> @item.Type</p>
+                                <p class="des"><span class="glyphicon glyphicon-bitcoin"></span> @item.Price</p>
+                                <p class="des"><span class="glyphicon glyphicon-cloud"></span> @item.Location</p>
+                                <p class="des"><span class="glyphicon glyphicon-calendar"></span> @item.PostDate</p>
+                                <a asp-action="Post" asp-route-id="@item.Id"><button class="w3-display-bottomright w3-btn w3-round-xxlarge btn-primary">View</button></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+			
+    </div>
+</div>
+
+<div class="container">
+	<div class="row">
+        @{
+            if (Model.Sale != null && Model.Sale.Count > 0)
+            {
+                <h2>Top Sale <a asp-action="Sale" class="w3-btn w3-btn-floating w3-right"><span class="glyphicon glyphicon-book"></span></a></h2>
+                foreach (var item in Model.Sale)
+                {
+                    <div class="col-md-3">
+                        <div class="w3-card-2">
+                            <div class="w3-display-container">
+                                 <div class="author">
+                                    <img src="@item.User.Photo" class="pic img-circle">
+                                    <span class="author">@item.User.FirstName @item.User.LastName</span>
+                                </div>
+                                <img src="~/@item.Photo1" alt="Lights" class="post img-responsive">
+                                <br>
+                                <p class="des"><span class="glyphicon glyphicon-list"></span> @item.Title</p>
+                                <p class="des"><span class="glyphicon glyphicon-tag"></span> @item.Type</p>
+                                <p class="des"><span class="glyphicon glyphicon-bitcoin"></span> @item.Price</p>
+                                <p class="des"><span class="glyphicon glyphicon-cloud"></span> @item.Location</p>
+                                <p class="des"><span class="glyphicon glyphicon-calendar"></span> @item.PostDate</p>
+                                <a asp-action="Post" asp-route-id="@item.Id"><button class="w3-display-bottomright w3-btn w3-round-xxlarge btn-primary">View</button></a>                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+			
+    </div>
+</div>
+
+<div class="container">
+	<div class="row">
+        @{
+            if (Model.Rent != null && Model.Rent.Count > 0)
+            {
+                <h2>Top Rent <a asp-action="Rent" class="w3-btn w3-btn-floating w3-right"><span class="glyphicon glyphicon-book"></span></a></h2>
+                foreach (var item in Model.Rent)
+                {
+                    <div class="col-md-3">
+                        <div class="w3-card-2">
+                            <div class="w3-display-container">
+                                 <div class="author">
+                                    <img src="@item.User.Photo" class="pic img-circle">
+                                    <span class="author">@item.User.FirstName @item.User.LastName</span>
+                                </div>
+                                <img src="~/@item.Photo1" alt="Lights" class="post img-responsive">
+                                <br>
+                                <p class="des"><span class="glyphicon glyphicon-list"></span> @item.Title</p>
+                                <p class="des"><span class="glyphicon glyphicon-tag"></span> @item.Type</p>
+                                <p class="des"><span class="glyphicon glyphicon-bitcoin"></span> @item.Price</p>
+                                <p class="des"><span class="glyphicon glyphicon-cloud"></span> @item.Location</p>
+                                <p class="des"><span class="glyphicon glyphicon-calendar"></span> @item.PostDate</p>
+                                <a asp-action="Post" asp-route-id="@item.Id"><button class="w3-display-bottomright w3-btn w3-round-xxlarge btn-primary">View</button></a>                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+			
+    </div>
+</div>

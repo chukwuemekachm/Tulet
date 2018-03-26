@@ -1,0 +1,44 @@
+@model IEnumerable<Tulet.Models.GlobalViewModels.Admin>
+@{
+    ViewData["Title"] = "Global Dashboard | My Admins"; 
+}
+
+<div class="container">
+	<h2><span class="glyphicon glyphicon-user"></span> @ViewData["Title"]</h2>
+	<div class="row">
+    	<div class="col-md-3">
+            @await Component.InvokeAsync("GlobalNav")
+		</div>
+		<div class="col-md-9">
+            <div class="row">
+                <table class="table table-striped w3-striped table-responsive">
+                    <tr>
+                        <th>User Id</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th><span class="glyphicon glyphicon-file"></span></th>
+                        <th><span class="glyphicon glyphicon-user"></span></th>
+                    </tr>
+                    @{
+                        if (Model != null) 
+                        {
+                            foreach (var item in this.Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Username</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td><a asp-controller="Admin" asp-action="AgentInfo" asp-route-id="@item.Email"><button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-file"> View</span></button></a></td>
+                                    <td><a asp-controller="Global" asp-action="UnAdmin" asp-route-id="@item.Id"><button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"> Un Admin</span></button></a></td>
+                                </tr>
+                            }
+                        }
+                    }
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</div>

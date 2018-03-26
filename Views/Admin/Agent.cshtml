@@ -1,0 +1,54 @@
+@using System.Collections.Generic 
+@model IEnumerable<Tulet.Models.Entities.User>
+@{
+    ViewData["Title"] = "Admin | Agents"; 
+}
+
+<div class="container">
+	<h2><span class="glyphicon glyphicon-user"></span> @ViewData["Title"]</h2>
+	<div class="row">
+    	<div class="col-md-3">
+            @await Component.InvokeAsync("AdminNav")
+		</div>
+		<div class="col-md-9">
+            <form asp-controller="Admin" asp-action="Agent" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search Users" name="id">
+                    <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-striped w3-striped table-responsive">
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Active</th>
+                    <th>Verified</th>
+                    <th><span class="glyphicon glyphicon-certificate"></span></th>
+                </tr>
+                @{
+                    if (Model != null) 
+                    {
+                        foreach (var item in this.Model)
+                        {
+                            <tr>
+                                <td>@item.Email</td>
+                                <td>@item.FirstName</td>
+                                <td>@item.LastName</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Active</td>
+                                <td>@item.Verified</td>
+                                <td><a asp-controller="Admin" asp-action="AgentInfo" asp-route-id="@item.Email"><button class="btn btn-success btn-xs"><span class="glyphicon glyphicon-certificate"> Profile</span></button></a></td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
